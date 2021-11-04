@@ -39,30 +39,22 @@ export default (state = initialState, action) => {
         title: action.title,
         completed: false
       });
-      break;
-    case 'TOGGLE':
-      for (let todo of state.todos) {
-        if (todo.id === action.id) {
-          todo.completed = !todo.completed;
-          break;
-        }
-      }
-      break;
-
-    case 'FILTER':
       
-      switch (action.value) {
+      return {...state}
+    case 'TOGGLE':
+      return {...state}
+    case 'FILTER':
+      switch(action.value) {
         case 'all':
-          state.todos_filter = state.todos
-        break;
-
-        case 'open':
-          state.todos_filter = state.todos.filter(todo => todo.completed === false)
-          break;
-
+          return {...state, todos_filter: state.todos}
         case 'closed':
-          state.todos_filter = state.todos.filter(todo => todo.completed === true)
-          break;
+          return {...state, todos_filter: state.todos.filter(todo => todo.completed)}
+        case 'open':
+          return {...state, todos_filter: state.todos.filter(todo => !todo.completed)}
+        default:
+          return state
       }
+    default:
+      return state
   }
 }

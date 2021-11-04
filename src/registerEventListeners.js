@@ -22,6 +22,7 @@ addListener('keypress', '[data-element="addTodoInput"]', (e) => {
 });
 
 addListener('click', 'input[name="filter"]', (e) => {
+  console.log(e.target.value)
   store.dispatch(todoActions.filter(e.target.value));
 });
 
