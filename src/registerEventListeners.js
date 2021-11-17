@@ -21,10 +21,10 @@ addListener('keypress', '[data-element="addTodoInput"]', (e) => {
   }
 });
 
-addListener('click', 'input[name="filter"]', (e) => {
-  console.log(e.target.value)
-  store.dispatch(todoActions.filter(e.target.value));
-});
+// addListener('click', 'input[name="filter"]', (e) => {
+//   console.log(e.target.value)
+//   store.dispatch(todoActions.filter(e.target.value));
+// });
 
 addListener('click', '[data-element="toggleTodo"]', e => {
   const id = Number(e.target.dataset.id);
